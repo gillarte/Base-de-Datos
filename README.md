@@ -1,4 +1,6 @@
 #BBDD
+
+
 DROP DATABASE IF EXISTS compras;
 CREATE DATABASE compras;
 USE compras;
