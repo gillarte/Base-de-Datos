@@ -1,0 +1,5 @@
+1)select * from clientes
+2)select nombre from provincias
+3)select apellido from clientes where apellido IN (select apellido from clientes group by apellido order by COUNT(*) DESC)
+4)select marca from productos order by precio DESC limit 3 select nombre from ciudades order by poblacion desc
+5)select nombre from ciudades order by poblacion desc
