@@ -1,0 +1,6 @@
+1)select * from clientes where id = (select id from provincias where nombre= 'Buenos Aires')
+2)select * from productos where precio > (select AVG(precio) from productos)
+3)select * from clientes where id = (select marca from productos where id = 5)
+4)select nombre from provincias where poblacion > (select AVG(poblacion) from provincias);
+5)select descripcion from productos where precio = (SELECT precio from productos where descripcion = 'birome azul');
+6)
