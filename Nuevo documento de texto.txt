@@ -3,3 +3,12 @@
 3)select apellido from clientes where apellido IN (select apellido from clientes group by apellido order by COUNT(*) DESC)
 4)select marca from productos order by precio DESC limit 3 select nombre from ciudades order by poblacion desc
 5)select nombre from ciudades order by poblacion desc
+6) select * from provincias where poblacion > 100000 and poblacion < 1000000;
+7) select *.clientes, nombre.ciudades from clientes join ciudades on id_ciudad.clientes = id.ciudades;
+8) select *.ciudades, nombre.provincias from ciudades join provincias on id_provincia.ciudades = id.provincias;
+9) select sum(stock) as stock_total from productos;
+10) select avg(precio) as promedio from productos;
+11) select count(id) as cantidad_clientes from clientes;
+12) select * from ciudades order by poblacion desc limit 3;
+13) select * from productos where stock < 10;
+15) select * from compras order by fecha desc limit 1;
