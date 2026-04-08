@@ -6,7 +6,7 @@
 6)SELECT * FROM ciudades WHERE provincia=(SELECT id FROM provincias WHERE nombre = "Buenos Aires");
 7)SELECT * from clientes where id not IN (select id from compras)
 8)select nombre from clientes where apellido = ( select apelliudo from cliuentes GROUP BY apellio DESC LIMIT 1)
-9)SELECT 
+9)SELECT * FROM clientes WHERE localidad =(SELECT localidad FROM clientes WHERE nombre ="Juan" AND apellido ="Perez");
 10)select descripcion from productos where stock <(select avg(stock) from productos)
 11)select nombre from ciudades where poblacion > (select poblacion from ciudades where nombre = "Rosario");
 12)select nombre from clientes where id i (seledct cliente from compras)
