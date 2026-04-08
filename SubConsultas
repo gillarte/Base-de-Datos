@@ -5,10 +5,10 @@
 5)select descripcion from productos where precio = (SELECT precio from productos where descripcion = 'birome azul');
 6)SELECT * FROM ciudades WHERE provincia=(SELECT id FROM provincias WHERE nombre = "Buenos Aires");
 7)SELECT * from clientes where id not IN (select id from compras)
-8)
+8)select ombbre from clientes where apellido = ( select apelliudo from cliuentes GROUP BY apellio DESC LIMIT 1)
 9)
-10)
-11)
-12)
-13)
-14)
+10)select descripcion from productos where stock <(select avg(stock) from productos)
+11)select nombre from ciudades where poblacion > (select poblacion from ciudades where nombre = "Rosario");
+12)select nombre from clientes where id i (seledct cliente from compras)
+13)select descripcion from productos where id not in (select producto from compras)
+14)select nombre from proviucioas where id = (select id from provincias where region = "La Pampa")
