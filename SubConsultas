@@ -3,4 +3,12 @@
 3)select * from clientes where id = (select marca from productos where id = 5)
 4)select nombre from provincias where poblacion > (select AVG(poblacion) from provincias);
 5)select descripcion from productos where precio = (SELECT precio from productos where descripcion = 'birome azul');
-6)
+6)SELECT * FROM ciudades WHERE provincia=(SELECT id FROM provincias WHERE nombre = "Buenos Aires");
+7)SELECT * from clientes where id not IN (select id from compras)
+8)
+9)
+10)
+11)
+12)
+13)
+14)
