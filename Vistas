@@ -1,11 +1,20 @@
-1) Create view nombre_cliente as select * from clientes
-2)insert into nombre cliente ('Antonela','Rojas')
+1)create view nombre_cliente as select nombre,apellido from clientes
+
+2)insert into nombre_cliente VALUES ('juan','rojas')
+
 3)drop view nombre_cliente
-4)create view Productos_bic as select marca,descripcion from productos where marca = 'BIC'
-5)CREATE VIEW porteños AS SELECT * FROM Clientes WHERE Provincia = 'buenos aires' OR Ciudad = 'ciudad autonoma';
-6)DROP VIEW porteños;
-CREATE VIEW porteños AS SELECT * FROM Clientes WHERE Provincia = 'buenos aires';
-7)CREATE VIEW productos_precio AS SELECT * FROM Productos WHERE precio > 100;
-8)create view cliente_ciudad as select clientes.nombre, clientes.apellido, ciudades.nombre from clientes join ciudades on clientes.localidad = ciudad.id;
-9)create view ciudad_provincia as select ciudades.nombre, provincias.nombre from ciudades join provincias on ciudad.provincia = provincia.id;
-10)create view ultima_compra as select clientes.nombre, compras.fecha from clientes join compras on clientes.id = compras.cliente order by compras.fecha desc limit 1;
+
+4)create view productos_BIC as SELECT * from productos where marca = 'BIC'
+
+5)CREATE VIEW porteños AS SELECT * FROM clientes WHERE localidad IN ('Buenos Aires', 'Ciudad Autónoma de Buenos Aires');
+
+6)drop view porteños;
+create view porteños as SELECT * from clientes where localidad = 'Ciudad Autónoma de Buenos Aires'
+
+7)create view productos_100 as SELECT * from productos where precio > 100
+
+8)create view clientes_ciudades as SELECT c.*,ci.nombre as ciudad from clientes c join ciudades ci on c.localidad = ci.id;
+
+9)create view ubicacion as SELECT c.nombre,p.nombre as provincia from ciudades c join provincias p on c.provincia = p.id
+
+10)create view ultima_compra as SELECT c.nombre,c.apellido,max(co.fecha) ultima_fecha from clientes c join compras co on c.id = co.cliente group by c.id,c.nombre,c.apellido
