@@ -1,14 +1,29 @@
 1)select * from clientes
+
 2)select nombre from provincias
-3)select apellido from clientes where apellido IN (select apellido from clientes group by apellido order by COUNT(*) DESC)
-4)select marca from productos order by precio DESC limit 3 select nombre from ciudades order by poblacion desc
-5)select nombre from ciudades order by poblacion desc
-6) select * from provincias where poblacion > 100000 and poblacion < 1000000;
-7) select *.clientes, nombre.ciudades from clientes join ciudades on id_ciudad.clientes = id.ciudades;
-8) select *.ciudades, nombre.provincias from ciudades join provincias on id_provincia.ciudades = id.provincias;
-9) select sum(stock) as stock_total from productos;
-10) select avg(precio) as promedio from productos;
-11) select count(id) as cantidad_clientes from clientes;
-12) select * from ciudades order by poblacion desc limit 3;
-13) select * from productos where stock < 10;
-15) select * from compras order by fecha desc limit 1;
+
+3)select nombre,apellido from clientes where apellido IN (SELECT apellido from clientes GROUP BY apellido order BY count(*) desc) 
+
+4)select * from productos order by precio desc limit 3 ;
+
+5)select * from ciudades order by problacion DESC
+
+6)select * from provincias where poblacion >= 100000 && poblacion <= 1000000 order by poblacion DESC
+
+7)select c.nombre,c.apellido,ci.nombre from clientes c join ciudades ci on c.id = ci.id
+
+8)select c.nombre, p.nombre from ciudades c join provincias p on c.provincia = p.id
+
+9)SELECT SUM(stock) as stock_total from productos 
+
+10)SELECT AVG(precio) as precio_promedio from productos
+
+11)SELECT COUNT(id) as clientes from clientes
+
+12)SELECT * from ciudades order by poblacion DESC limit 3
+
+13)SELECT * from productos where stock <10
+
+14)SELECT c.nombre,c.apellido,sum(co.cant) as total from clientes c join compras co on c.id = co.cliente GROUP by c.id,c.nombre,c.apellido
+
+15)SELECT c.nombre,c.apellido,co.fecha from clientes c join compras co on c.id = co.cliente order by fecha DESC limit 1;
