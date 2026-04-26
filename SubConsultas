@@ -1,14 +1,27 @@
-1)select * from clientes where id = (select id from provincias where nombre= 'Buenos Aires')
-2)select * from productos where precio > (select AVG(precio) from productos)
-3)select * from clientes where id = (select marca from productos where id = 5)
-4)select nombre from provincias where poblacion > (select AVG(poblacion) from provincias);
-5)select descripcion from productos where precio = (SELECT precio from productos where descripcion = 'birome azul');
-6)SELECT * FROM ciudades WHERE provincia=(SELECT id FROM provincias WHERE nombre = "Buenos Aires");
-7)SELECT * from clientes where id not IN (select id from compras)
-8)select nombre from clientes where apellido = ( select apelliudo from cliuentes GROUP BY apellio DESC LIMIT 1)
-9)SELECT * FROM clientes WHERE localidad =(SELECT localidad FROM clientes WHERE nombre ="Juan" AND apellido ="Perez");
-10)select descripcion from productos where stock <(select avg(stock) from productos)
-11)select nombre from ciudades where poblacion > (select poblacion from ciudades where nombre = "Rosario");
-12)select nombre from clientes where id i (seledct cliente from compras)
-13)select descripcion from productos where id not in (select producto from compras)
-14)select nombre from provincias where id = (select id from provincias where region = "La Pampa")
+1)SELECT * from clientes where id = (SELECT id from provincias where nombre = 'Buenos Aires');
+
+2)SELECT * from productos where precio > (SELECT AVG(precio) from productos)
+
+3)SELECT nombre,apellido from clientes where id = (SELECT id from productos where id = 5);
+
+4)SELECT nombre from provincias where poblacion > (SELECT AVG(poblacion) from provincias)
+
+5)SELECT * from productos where precio = (SELECT precio from productos where descripcion = 'birome azul')
+
+6)SELECT nombre from ciudades where provincia = (SELECT id from provincias where nombre = 'Buenos Aires')
+
+7)SELECT nombre,apellido from clientes where id not in(SELECT id from compras)
+
+8)SELECT apellido from clientes group by apellido having count(*) = (SELECT COUNT(*)from clientes group by apellido order by count(*) DESC limit 1);
+
+9)SELECT nombre,apellido from clientes where localidad = (SELECT localidad from clientes where nombre ='Juan' AND apellido = 'Perez')
+
+10)SELECT * from productos where stock < (SELECT avg(stock) from productos);
+
+11)SELECT nombre from ciudades where poblacion > (SELECT poblacion from ciudades where nombre = 'Rosario')
+
+12)SELECT nombre,apellido from clientes where id IN (SELECT cliente from compras)
+
+13) SELECT * from productos where id not in (SELECT producto from compras)
+
+14)SELECT nombre from provincias where region IN (SELECT region from provincias where region = 'Pampa');
