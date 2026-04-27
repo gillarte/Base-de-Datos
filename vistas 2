@@ -1,0 +1,11 @@
+1)SELECT c.nombre,c.apellido,sum(p.precio*co.cant) as total_gastado from clientes c join compras co on c.id = co.cliente join productos p on co.producto = p.id group by c.id,c.nombre,c.apellido order by total_gastado DESC
+
+2)create view clientes_premiun as SELECT c.nombre,c.apellido,sum(co.cant) as total_comprado from clientes c join compras co GROUP by c.id,c.nombre,c.apellido having sum(co.cant) > (SELECT avg(cant) as total_comprado from compras group by cliente)
+
+3)create view productos_mas_vendidos as SELECT p.marca,p.descripcion,sum(co.cant) as total_vendido from productos p join compras co on p.id = co.producto group by p.id,p.marca,p.descripcion order by total_vendido DESC
+
+6)create view cliente_seguridad as SELECT c.nombre,c.apellido,co.cant from clientes c join compras co on c.id = co.cliente 
+
+5)SELECT nombre,poblacion from ciudades where poblacion > (SELECT avg(poblacion) from ciudades)
+
+7)create view dos_marcas as SELECT c.nombre,c.apellido from clientes c join compras co on c.id = co.cliente join productos p on co.producto = p.id GROUP BY c.id,c.nombre,c.apellido having COUNT(DISTINCT p.marca) >2
